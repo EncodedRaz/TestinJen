@@ -1,16 +1,13 @@
 pipeline {
-  agent {
-    docker {
-      image 'node:6-alpine'
-      args '-p 3000:3000'
-    }
-    
-  }
+  agent any
   stages {
-    stage('Build') {
+    stage('Find') {
       steps {
-        sh 'npm install'
+        node(label: 'WrkSt')
       }
     }
+  }
+  environment {
+    Stageing = '01'
   }
 }
